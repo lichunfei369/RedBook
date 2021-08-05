@@ -5,8 +5,14 @@
 //  Created by Apple on 2021/8/5.
 //
 
-import Foundation
+import UIKit
 
-let kFollwVCID  = "FollwVCID"
-let kNearByVCID = "NearByVCID"
+// MARK: StoryboardID
+let kFollwVCID   = "FollwVCID"
+let kNearByVCID  = "NearByVCID"
 let kDiscoveryID = "DiscoveryID"
+
+// MARK: CellID
+let kWaterfallCellID = "WaterfallCellID"
+
+let kWaterfallPadding: CGFloat = 4
