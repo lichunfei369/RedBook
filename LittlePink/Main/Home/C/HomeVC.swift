@@ -50,8 +50,8 @@ class HomeVC: ButtonBarPagerTabStripViewController {
         settings.style.selectedBarHeight = 3
         //去除 BackgroundColor
         settings.style.buttonBarItemBackgroundColor = .clear
-        //设置字体颜色
-        settings.style.buttonBarItemTitleColor = .label
+//        //设置字体颜色
+//        settings.style.buttonBarItemTitleColor = .label
         //字体加粗
         settings.style.buttonBarItemFont = .boldSystemFont(ofSize: 16)
         //设置barItem大小

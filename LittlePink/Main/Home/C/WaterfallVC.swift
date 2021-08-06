@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import XLPagerTabStrip
 import CHTCollectionViewWaterfallLayout
 class WaterfallVC: UICollectionViewController {
-
+    var channel = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         let layout  = collectionView.collectionViewLayout as! CHTCollectionViewWaterfallLayout
-        
         layout.columnCount = 2
+        //列与列的间隙 左右
         layout.minimumColumnSpacing = kWaterfallPadding
+        //行与行 上下
         layout.minimumInteritemSpacing = kWaterfallPadding
+        //上下左右间距
         layout.sectionInset = UIEdgeInsets(top: 0, left: kWaterfallPadding, bottom: kWaterfallPadding, right: kWaterfallPadding)
+        //设置最后一张图片填充顺序方向
+//        layout.itemRenderDirection = .leftToRight
 
     }
 
@@ -30,7 +35,7 @@ class WaterfallVC: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
    
-        return 9
+        return 13
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -73,4 +78,16 @@ class WaterfallVC: UICollectionViewController {
     }
     */
 
+}
+// MARK: - 有几个列表就循环多少超出报错
+extension WaterfallVC:CHTCollectionViewDelegateWaterfallLayout{
+    func collectionView(_ collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAt indexPath: IndexPath!) -> CGSize {
+        UIImage(named: "\(indexPath.item + 1)")!.size
+    }
+}
+
+extension WaterfallVC:IndicatorInfoProvider{
+    func indicatorInfo(for pagerTabStripController: PagerTabStripViewController) -> IndicatorInfo {
+        return IndicatorInfo(title: channel)
+    }
 }

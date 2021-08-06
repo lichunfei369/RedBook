@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>小粉书</string>
+	<string>仿小红书</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,6 +22,14 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>打开后可以拍摄照片和视频</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>打开后可以录制视频声音</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>打开后可以保存照片</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>打开后可以拍摄照片和视频</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
