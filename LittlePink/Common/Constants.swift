@@ -11,11 +11,15 @@ import UIKit
 let kFollwVCID   = "FollwVCID"
 let kNearByVCID  = "NearByVCID"
 let kDiscoveryID = "DiscoveryID"
-let kWaterfallID = "WaterfallID"
+let kWaterfallID = "WaterfallID" 
+let NoteEditVCID = "NoteEditVCID"
 // MARK: CellID 
 let kWaterfallCellID = "WaterfallCellID"
+let kPhotoFooterID = "PhotoFooterID"
+let kPhotoCellID = "PhotoCellID"
 // MARK: 瀑布流间隙
 let kWaterfallPadding: CGFloat = 4
+let kMaxPhotoCount = 9
 // MARK: 状态栏高度
 let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
 let statusHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
