@@ -116,6 +116,8 @@
                                                 <connections>
                                                     <outlet property="dataSource" destination="38v-IO-wrd" id="mPf-kd-UpY"/>
                                                     <outlet property="delegate" destination="38v-IO-wrd" id="ovi-Im-iLX"/>
+                                                    <outlet property="dragDelegate" destination="38v-IO-wrd" id="0C9-RU-FcJ"/>
+                                                    <outlet property="dropDelegate" destination="38v-IO-wrd" id="lRk-Cr-zlj"/>
                                                 </connections>
                                             </collectionView>
                                         </subviews>

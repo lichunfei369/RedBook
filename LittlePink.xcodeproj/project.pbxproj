@@ -15,6 +15,8 @@
 		18BFA71B26BBD1FB005CF0B2 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BFA71A26BBD1FB005CF0B2 /* Constants.swift */; };
 		18C787E826C4BA1B00EB991E /* CollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787E726C4BA1B00EB991E /* CollectionViewVC.swift */; };
 		18C787EC26C4C7BC00EB991E /* PhotoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787EB26C4C7BC00EB991E /* PhotoFooter.swift */; };
+		18C787F026C50FE000EB991E /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 18C787EF26C50FE000EB991E /* testVideo.mp4 */; };
+		18C787F426C5138D00EB991E /* PostExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787F326C5138D00EB991E /* PostExtension.swift */; };
 		18D2370A26BD0DAC007DDC60 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D2370C26BD0DAC007DDC60 /* Localizable.strings */; };
 		18D2371326BD12A6007DDC60 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2371226BD12A6007DDC60 /* TabbarController.swift */; };
 		18D2371526BD1433007DDC60 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2371426BD1433007DDC60 /* PostVC.swift */; };
@@ -41,6 +43,8 @@
 		18C787E726C4BA1B00EB991E /* CollectionViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewVC.swift; sourceTree = "<group>"; };
 		18C787EB26C4C7BC00EB991E /* PhotoFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFooter.swift; sourceTree = "<group>"; };
 		18C787ED26C503D100EB991E /* LittlePink-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LittlePink-Bridging-Header.h"; sourceTree = "<group>"; };
+		18C787EF26C50FE000EB991E /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
+		18C787F326C5138D00EB991E /* PostExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExtension.swift; sourceTree = "<group>"; };
 		18D236FE26BCE0D9007DDC60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		18D2370226BCE2EA007DDC60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		18D2370B26BD0DAC007DDC60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -106,6 +110,23 @@
 			path = C;
 			sourceTree = "<group>";
 		};
+		18C787F126C512F800EB991E /* C */ = {
+			isa = PBXGroup;
+			children = (
+				18D2371426BD1433007DDC60 /* PostVC.swift */,
+				1893908C26C3B94E00A2FE05 /* NoteEditVC.swift */,
+			);
+			path = C;
+			sourceTree = "<group>";
+		};
+		18C787F226C5132E00EB991E /* V */ = {
+			isa = PBXGroup;
+			children = (
+				18C787EB26C4C7BC00EB991E /* PhotoFooter.swift */,
+			);
+			path = V;
+			sourceTree = "<group>";
+		};
 		18D236FC26BCDEA2007DDC60 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -118,9 +139,9 @@
 		18D2371626BD14A9007DDC60 /* Post */ = {
 			isa = PBXGroup;
 			children = (
-				18D2371426BD1433007DDC60 /* PostVC.swift */,
-				1893908C26C3B94E00A2FE05 /* NoteEditVC.swift */,
-				18C787EB26C4C7BC00EB991E /* PhotoFooter.swift */,
+				18C787F126C512F800EB991E /* C */,
+				18C787F226C5132E00EB991E /* V */,
+				18C787F326C5138D00EB991E /* PostExtension.swift */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -165,6 +186,7 @@
 				A4DC2EF7254D93B700F23FB4 /* LittlePink.xcdatamodeld */,
 				18D2370C26BD0DAC007DDC60 /* Localizable.strings */,
 				18C787ED26C503D100EB991E /* LittlePink-Bridging-Header.h */,
+				18C787EF26C50FE000EB991E /* testVideo.mp4 */,
 			);
 			path = LittlePink;
 			sourceTree = "<group>";
@@ -268,6 +290,7 @@
 				A4DC2EFE254D93B700F23FB4 /* LaunchScreen.storyboard in Resources */,
 				18D2370A26BD0DAC007DDC60 /* Localizable.strings in Resources */,
 				A4DC2EFB254D93B700F23FB4 /* Assets.xcassets in Resources */,
+				18C787F026C50FE000EB991E /* testVideo.mp4 in Resources */,
 				A4DC2EF6254D93B700F23FB4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -352,6 +375,7 @@
 				A4DC2EEF254D93B700F23FB4 /* AppDelegate.swift in Sources */,
 				A4DC2EF1254D93B700F23FB4 /* SceneDelegate.swift in Sources */,
 				18BFA71426BBD03F005CF0B2 /* DiscoveryVC.swift in Sources */,
+				18C787F426C5138D00EB991E /* PostExtension.swift in Sources */,
 				A4DC2EF9254D93B700F23FB4 /* LittlePink.xcdatamodeld in Sources */,
 				18BFA71226BBD022005CF0B2 /* FollowVC.swift in Sources */,
 				18BFA71B26BBD1FB005CF0B2 /* Constants.swift in Sources */,

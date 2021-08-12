@@ -9,16 +9,25 @@ import UIKit
 import YPImagePicker
 import MBProgressHUD
 import SKPhotoBrowser
+import AVKit
 class NoteEditVC: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
-    
+    //用于图片预判添加
     var photos = [UIImage(named: "1")!,UIImage(named: "2")!]
+    //用于预览视频
+//    var videoUrl:URL = Bundle.main.url(forResource: "testVideo", withExtension:"mp4")!
+    var videoUrl:URL?
+    
     //计算属性节省资源
     var photoCount:Int{photos.count}
     
+    //如果不等于nil代表选中的是视频
+    var isVieo:Bool{videoUrl != nil}
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        //开启拖拽
+        photoCollectionView.dragInteractionEnabled = true
     }
 
 
@@ -58,17 +67,24 @@ extension NoteEditVC:UICollectionViewDataSource{
 }
 extension NoteEditVC:UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // 1. create SKPhoto Array from UIImage
-        var images : [SKPhoto] = []
-        for photo in photos{
-            images.append(SKPhoto.photoWithImage(photo))
+        
+        if isVieo {
+            let playerVC = AVPlayerViewController()
+            playerVC.player = AVPlayer(url:videoUrl!)
+            present(playerVC, animated: true) {
+                playerVC.player?.play()
+            }
+        }else{
+            var images : [SKPhoto] = []
+            for photo in photos{
+                images.append(SKPhoto.photoWithImage(photo))
+            }
+        
+            let browser =  SKPhotoBrowser(photos: images, initialPageIndex: indexPath.item)
+            browser.delegate = self
+            SKPhotoBrowserOptions.displayDeleteButton = true
+            present(browser, animated: true, completion: {})
         }
-    
-        // 2. create PhotoBrowser Instance, and present from your viewController.
-        let browser =  SKPhotoBrowser(photos: images, initialPageIndex: indexPath.item)
-        browser.delegate = self
-        SKPhotoBrowserOptions.displayDeleteButton = true
-        present(browser, animated: true, completion: {})
     }
 }
 // MARK: -SKPhotoBrowserDelegate
