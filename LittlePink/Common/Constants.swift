@@ -26,3 +26,5 @@ let statusHeight = window?.windowScene?.statusBarManager?.statusBarFrame.height 
 let naHeight = statusHeight + 44
 
 let kChannels = ["推荐","旅行","娱乐","才艺","美妆","白富美","美食","萌宠"]
+//最大输入数量
+let kMaxNoteTitleCount = 20

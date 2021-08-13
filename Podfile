@@ -9,4 +9,6 @@ target 'LittlePink' do
   pod 'YPImagePicker'
   pod 'MBProgressHUD', '~> 1.2.0'
   pod 'SKPhotoBrowser'
+  #textView添加placeholder
+  pod 'KMPlaceholderTextView', '~> 1.4.0'
 end

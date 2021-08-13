@@ -6,12 +6,16 @@
 //
 
 import UIKit
-import YPImagePicker
-import MBProgressHUD
-import SKPhotoBrowser
-import AVKit
+//import YPImagePicker
+//import MBProgressHUD
+//import SKPhotoBrowser
+//import AVKit
 class NoteEditVC: UIViewController {
     @IBOutlet weak var photoCollectionView: UICollectionView!
+    
+    @IBOutlet weak var titleTextFieid: UITextField!
+    @IBOutlet weak var titleCountLabel: UILabel!
+    @IBOutlet weak var textView: UITextView!
     //用于图片预判添加
     var photos = [UIImage(named: "1")!,UIImage(named: "2")!]
     //用于预览视频
@@ -26,116 +30,68 @@ class NoteEditVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //开启拖拽
-        photoCollectionView.dragInteractionEnabled = true
+        config()
     }
 
-
-}
-
-extension NoteEditVC:UICollectionViewDataSource{
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        photoCount
+    //开始编辑
+    @IBAction func TFEditBegin(_ sender: Any) {
+        //显示字数
+        titleCountLabel.isHidden = false
     }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        //这里如果没有as 自己创建cell是是找不到cell属性的
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: kPhotoCellID, for: indexPath) as! PhotoCell
-        cell.imageView.image = photos[indexPath.item]
-        return cell
+    //结束编辑
+    @IBAction func TFEditEnd(_ sender: Any) {
+        //隐藏字数
+        titleCountLabel.isHidden = true
     }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        //不推荐 如果只有一个这样操作可以 如果头和尾同时有不推荐
-//       let photoFooter =  collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kPhotoFooterID, for: indexPath) as! PhotoFooter
-//        return photoFooter;
-        
-        //区分是头还是尾
-        switch kind {
-        
-        case UICollectionView.elementKindSectionFooter:
-            let photoFooter =  collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: kPhotoFooterID, for: indexPath) as! PhotoFooter
-            photoFooter.addPhotoFootBt.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
-            return photoFooter
-        default:
-            fatalError("UICollectionViewFooter出问题了")
+    // done 键盘回收
+    @IBAction func TFEndOnExit(_ sender: Any) {
+    }
+    //用户输入调用
+    @IBAction func TFEditChanged(_ sender: Any) {
+        guard titleTextFieid.markedTextRange == nil else {return}
+        //判断输入的值如果大于最大输入的值
+        if titleTextFieid.unwrappedText.count > kMaxNoteTitleCount{
+            //多出来的字截取掉从前面开始截取最大可输入字符
+            titleTextFieid.text = String(titleTextFieid.unwrappedText.prefix(kMaxNoteTitleCount))
+            
+            //改变光标位置需要改变文本选择范围放在主线程中
+            DispatchQueue.main.async {
+                //获取光标的位置
+                let end = self.titleTextFieid.endOfDocument
+                //设置光标到文本的最后
+                self.titleTextFieid.selectedTextRange = self.titleTextFieid.textRange(from: end, to: end)
+            }
             
         }
-        
+        titleCountLabel.text  = "\(kMaxNoteTitleCount - titleTextFieid.unwrappedText.count)"
     }
     
 }
-extension NoteEditVC:UICollectionViewDelegate{
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+extension NoteEditVC:UITextFieldDelegate{
+    
+    /*
+     输入之前的方法
+     
+     range.location 输入字符的索引
+     string 输入的文字
+     
+     
+     布局优先级的知识当谁的值高谁就不会优先被压缩低的会自动拉伸 250
+     
+     */
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        //判断是否超过字数
+//        if  range.location >= kMaxNoteTitleCount || (textField.unwrappedText.count +  string.count) > kMaxNoteTitleCount{
+//            return false
+//        }
         
-        if isVieo {
-            let playerVC = AVPlayerViewController()
-            playerVC.player = AVPlayer(url:videoUrl!)
-            present(playerVC, animated: true) {
-                playerVC.player?.play()
-            }
-        }else{
-            var images : [SKPhoto] = []
-            for photo in photos{
-                images.append(SKPhoto.photoWithImage(photo))
-            }
+        let isExceed = range.location >= kMaxNoteTitleCount || (textField.unwrappedText.count +  string.count) > kMaxNoteTitleCount
         
-            let browser =  SKPhotoBrowser(photos: images, initialPageIndex: indexPath.item)
-            browser.delegate = self
-            SKPhotoBrowserOptions.displayDeleteButton = true
-            present(browser, animated: true, completion: {})
-        }
-    }
-}
-// MARK: -SKPhotoBrowserDelegate
-extension NoteEditVC:SKPhotoBrowserDelegate{
-    func removePhoto(_ browser: SKPhotoBrowser, index: Int, reload: @escaping (() -> Void)) {
-        photos.remove(at: index)
-        photoCollectionView.reloadData()
-        reload()//重新加载方法视图
-    }
-}
-// MARK: - 监听点击
-extension NoteEditVC{
-    @objc private func addPhoto(sender:UIButton){
-        if photoCount < kMaxPhotoCount{
-            var config = YPImagePickerConfiguration()
+        if isExceed {showTextHUD("输入最多输入\(kMaxNoteTitleCount)")}
             
-            //适配ipad
-            let preferredContentSize = CGSize(width: 500, height: 600);
-            YPImagePickerConfiguration.widthOniPad = preferredContentSize.width;
-            
-            //保存的相册名字
-            config.albumName =  Bundle.main.appName
-            //设置支持样式 相册 视频 文件
-            config.screens = [.library]
-            
-           
-            //支持多选 true 默认是单选false
-            config.library.defaultMultipleSelection = true
-            //选择最大数量
-            config.library.maxNumberOfItems = kMaxPhotoCount - photoCount
-            //缩略图间隙
-            config.library.spacingBetweenItems = 1.0
-            
-            //多选编辑是否增加删除按钮 默认是true没有删除
-            config.gallery.hidesRemoveButton = false
-            
-            let picker = YPImagePicker(configuration: config)
-            //防止循环引用 [unowned picker]
-            picker.didFinishPicking { [unowned picker] items, _ in
-                for item in items {
-                    if case let .photo(photo)  = item{
-                        self.photos.append(photo.image)
-                    }
-                }
-                self.photoCollectionView.reloadData()
-                
-                picker.dismiss(animated: true)
-            }
-            present(picker, animated: true)
-        }else{
-            self.showTextHUD("最多只能选择\(kMaxPhotoCount)张照片")
-        }
+        
+        return !isExceed
     }
 }

@@ -16,7 +16,8 @@
 		18C787E826C4BA1B00EB991E /* CollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787E726C4BA1B00EB991E /* CollectionViewVC.swift */; };
 		18C787EC26C4C7BC00EB991E /* PhotoFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787EB26C4C7BC00EB991E /* PhotoFooter.swift */; };
 		18C787F026C50FE000EB991E /* testVideo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 18C787EF26C50FE000EB991E /* testVideo.mp4 */; };
-		18C787F426C5138D00EB991E /* PostExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787F326C5138D00EB991E /* PostExtension.swift */; };
+		18C787F826C6261D00EB991E /* NoteExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787F726C6261D00EB991E /* NoteExtension.swift */; };
+		18C787FB26C64A7D00EB991E /* NoteConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18C787FA26C64A7D00EB991E /* NoteConfig.swift */; };
 		18D2370A26BD0DAC007DDC60 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 18D2370C26BD0DAC007DDC60 /* Localizable.strings */; };
 		18D2371326BD12A6007DDC60 /* TabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2371226BD12A6007DDC60 /* TabbarController.swift */; };
 		18D2371526BD1433007DDC60 /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D2371426BD1433007DDC60 /* PostVC.swift */; };
@@ -44,7 +45,8 @@
 		18C787EB26C4C7BC00EB991E /* PhotoFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoFooter.swift; sourceTree = "<group>"; };
 		18C787ED26C503D100EB991E /* LittlePink-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LittlePink-Bridging-Header.h"; sourceTree = "<group>"; };
 		18C787EF26C50FE000EB991E /* testVideo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = testVideo.mp4; sourceTree = "<group>"; };
-		18C787F326C5138D00EB991E /* PostExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostExtension.swift; sourceTree = "<group>"; };
+		18C787F726C6261D00EB991E /* NoteExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteExtension.swift; sourceTree = "<group>"; };
+		18C787FA26C64A7D00EB991E /* NoteConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteConfig.swift; sourceTree = "<group>"; };
 		18D236FE26BCE0D9007DDC60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		18D2370226BCE2EA007DDC60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		18D2370B26BD0DAC007DDC60 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
@@ -127,6 +129,15 @@
 			path = V;
 			sourceTree = "<group>";
 		};
+		18C787F926C626AA00EB991E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				18C787F726C6261D00EB991E /* NoteExtension.swift */,
+				18C787FA26C64A7D00EB991E /* NoteConfig.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		18D236FC26BCDEA2007DDC60 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,7 +152,7 @@
 			children = (
 				18C787F126C512F800EB991E /* C */,
 				18C787F226C5132E00EB991E /* V */,
-				18C787F326C5138D00EB991E /* PostExtension.swift */,
+				18C787F926C626AA00EB991E /* Extension */,
 			);
 			path = Post;
 			sourceTree = "<group>";
@@ -363,6 +374,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				18C787EC26C4C7BC00EB991E /* PhotoFooter.swift in Sources */,
+				18C787FB26C64A7D00EB991E /* NoteConfig.swift in Sources */,
+				18C787F826C6261D00EB991E /* NoteExtension.swift in Sources */,
 				18D2371526BD1433007DDC60 /* PostVC.swift in Sources */,
 				18C787E826C4BA1B00EB991E /* CollectionViewVC.swift in Sources */,
 				183656BE26C3C58500A1CFDC /* PhotoCell.swift in Sources */,
@@ -375,7 +388,6 @@
 				A4DC2EEF254D93B700F23FB4 /* AppDelegate.swift in Sources */,
 				A4DC2EF1254D93B700F23FB4 /* SceneDelegate.swift in Sources */,
 				18BFA71426BBD03F005CF0B2 /* DiscoveryVC.swift in Sources */,
-				18C787F426C5138D00EB991E /* PostExtension.swift in Sources */,
 				A4DC2EF9254D93B700F23FB4 /* LittlePink.xcdatamodeld in Sources */,
 				18BFA71226BBD022005CF0B2 /* FollowVC.swift in Sources */,
 				18BFA71B26BBD1FB005CF0B2 /* Constants.swift in Sources */,

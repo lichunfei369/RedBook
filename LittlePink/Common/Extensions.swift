@@ -8,6 +8,12 @@
 import Foundation
 import UIKit
 
+// MARK: -
+
+extension UITextField {
+    var unwrappedText:String{text ?? ""}
+}
+
 // MARK: - 扩展圆角方法
 extension UIView{
     //为xib扩展方法
@@ -35,6 +41,16 @@ extension UIViewController {
         hud.label.text = title
         hud.hide(animated: true,afterDelay: 2)
     }
+    
+    func hideKeyboardWhenTappedAround(){
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        //为了与其他点击方法不冲突tableviewcell点击
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissKeyboard(){
+        view.endEditing(true)
+    }
 }
 
 extension Bundle{
@@ -42,5 +58,6 @@ extension Bundle{
        return Bundle.main.infoDictionary!["CFBundleDisplayName"] as! String
     }
 }
+
 
 
